@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Помічник.ua</title>
+</head>
+<body>
+    <div style="position: absolute; top: 10px; right: 150px;">
+        <a href="{{ url_for('login') }}">Увійти</a>
+    </div>
+    <div style="position: absolute; top: 10px; right: 20px;">
+        <a href="{{ url_for('register') }}">Зареєструватися</a>
+    </div>
+    <div style="position: absolute; top: 100px; left: 60px;">
+        <a href="{{ url_for('calculate') }}">Калькулятор</a>
+    </div>
+    <div style="position: absolute; top: 130px; left: 60px;">
+        <a href="{{ url_for('timer') }}">Таймер</a>
+    </div>
+    <div style="position: absolute; top: 160px; left: 60px;">
+        <a href="{{ url_for('stopwatch') }}">Секундомер</a>
+    </div>
+    <div style="position: absolute; top: 190px; left: 60px;">
+        <a href="{{ url_for('task_list') }}">Завдання</a>
+    </div>
+    <div style="position: absolute; top: 220px; left: 60px;">
+        <a href="{{ url_for('password_generator') }}">Генератор паролів</a>
+    </div>
+    <h1>Помічник.ua</h1>
+</body>
+</html>

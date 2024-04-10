@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список завдань</title>
+</head>
+<body>
+    <h1>Список завдань</h1>
+    <form method="POST">
+        <input type="text" name="task">
+        <button type="submit">Додати завдання</button>
+    </form>
+    <ul>
+        {% for task_index, task in enumerate(tasks) %}
+            <li>{{ task }}
+                <form method="POST" action="/delete_task/{{ task_index }}">
+                    <button type="submit">Видалити</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="/">Назад до меню</a>
+</body>
+</html>

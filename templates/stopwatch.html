@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+    <script>
+        var startTime = 0;
+        var elapsedTime = 0;
+        var running = false;
+        var interval;
+
+        function startTimer() {
+            if (!running) {
+                startTime = Date.now() - elapsedTime;
+                interval = setInterval(updateTimer, 10);
+                running = true;
+            }
+        }
+
+        function pauseTimer() {
+            if (running) {
+                clearInterval(interval);
+                running = false;
+                elapsedTime = Date.now() - startTime;
+            }
+        }
+
+        function resetTimer() {
+            clearInterval(interval);
+            running = false;
+            elapsedTime = 0;
+            startTime = 0;
+            document.getElementById('timer').innerText = "00:00.00";
+        }
+
+        function updateTimer() {
+            var minutes = Math.floor(elapsedTime / (1000 * 60)) % 60;
+            var seconds = Math.floor(elapsedTime / 1000) % 60;
+            var milliseconds = Math.floor((elapsedTime % 1000) / 10);
+
+            var timerDisplay =
+                (minutes < 10 ? "0" : "") + minutes + ":" +
+                (seconds < 10 ? "0" : "") + seconds + "." +
+                (milliseconds < 10 ? "0" : "") + milliseconds;
+
+            document.getElementById('timer').innerText = timerDisplay;
+            elapsedTime = Date.now() - startTime;
+        }
+    </script>
+</head>
+<body>
+    <h1>Stopwatch</h1>
+    <p id="timer">00:00.00</p>
+    <button onclick="startTimer()">Start</button>
+    <button onclick="pauseTimer()">Pause</button>
+    <button onclick="resetTimer()">Обнулити</button>
+    <div style="position: absolute; top: 140px; left: 7px;">
+        <a href="{{ url_for('index') }}">Назад до меню</a>
+    </div>
+</body>
+</html>

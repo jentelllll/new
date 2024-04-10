@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Таймер</title>
+</head>
+<body>
+    <h1>Таймер</h1>
+    <form action="/timer" method="post">
+        <label for="seconds">Введіть кількість секунд:</label>
+        <input type="number" name="seconds" id="seconds" required>
+        <input type="submit" value="Почати таймер">
+    </form>
+
+    <div id="countdown"></div>
+
+    <script>
+        var countdown = document.getElementById('countdown');
+        var form = document.querySelector('form');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            var seconds = parseInt(document.getElementById('seconds').value);
+            var timer = setInterval(function() {
+                if (seconds <= 0) {
+                    clearInterval(timer);
+                    countdown.innerHTML = "Таймер завершено!";
+                    setTimeout(function() {
+                        window.location.href = "/timer";
+                    }, 2000); // Почекайте 2 секунди перед перенаправленням
+                } else {
+                    countdown.innerHTML = seconds + " сек";
+                    seconds--;
+                }
+            }, 1000);
+        });
+    </script>
+    <a href="/">Назад до меню</a>
+</body>
+</html>
